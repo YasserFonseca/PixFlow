@@ -206,8 +206,3 @@ Verifique:
 ## 📄 Licença
 
 Proprietary - Cliente PixFlow
-
----
-
-**última atualização**: 2024
-**Próximo deploy**: Seguir DEPLOYMENT.md
