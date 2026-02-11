@@ -3,14 +3,7 @@
   "devCommand": "npm run dev",
   "outputDirectory": "dist",
   "framework": "vite",
-  "env": {
-    "VITE_API_BASE": "@vite_api_base"
-  },
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "$VITE_API_BASE/api/:path*"
-    },
     {
       "source": "/:path((?!.*\\.).*)*",
       "destination": "/index.html"
@@ -18,23 +11,22 @@
   ],
   "headers": [
     {
-      "source": "/:path*",
+      "source": "/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=3600"
-        },
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
         {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
-  ],
-  "functions": {
-    "api/**: {
-      "memory": 512,
-      "maxDuration": 30
-    }
-  }
+  ]
 }
