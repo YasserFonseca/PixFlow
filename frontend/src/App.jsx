@@ -5,6 +5,7 @@ import FirstPassword from "./pages/FirstPassword.jsx";
 
 import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Cashier from "./pages/Cashier.jsx";
 import Charges from "./pages/Charges.jsx";
 import Admin from "./pages/Admin.jsx";
 import Reset from "./pages/Reset.jsx";
@@ -125,6 +126,7 @@ function Nav({ me }) {
   return (
     <>
       <button className="btn secondary" onClick={() => go("/")}>Dashboard</button>
+      <button className="btn secondary" onClick={() => go("/cashier")}>Caixa</button>
       <button className="btn secondary" onClick={() => go("/charges")}>Cobranças</button>
       {me?.role === "admin" ? (
         <button className="btn secondary" onClick={() => go("/admin")}>Admin</button>
@@ -142,6 +144,7 @@ function Shell({ me, token, setError, setMe }) {
     return () => window.removeEventListener("popstate", fn);
   }, []);
 
+  if (route === "/cashier") return <Cashier me={me} token={token} setError={setError} />;
   if (route === "/charges") return <Charges me={me} token={token} setError={setError} />;
   if (route === "/admin") return me?.role === "admin" ? <Admin token={token} setError={setError} /> : <Dashboard me={me} token={token} setError={setError} setMe={setMe} />;
   return <Dashboard me={me} token={token} setError={setError} setMe={setMe} />;
