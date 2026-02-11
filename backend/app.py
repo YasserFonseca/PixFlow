@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
 # ============ CONFIG ============
 db_url = os.getenv("DATABASE_URL") or "sqlite:///pixflow.db"
