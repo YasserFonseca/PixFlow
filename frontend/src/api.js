@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_BASE || "https://pixflow-isps.onrender.com";
 
 /**
  * Wrapper para fetch com tratamento de erro e tokens
