@@ -10,7 +10,7 @@ export async function apiFetch(path, { token, method = "GET", body, params } = {
   if (body) headers["Content-Type"] = "application/json";
   if (token) headers["Authorization"] = "Bearer " + token;
 
-  let url = API + path;
+  let url = API + "/api" + path;
   if (params) {
     const qs = new URLSearchParams(params).toString();
     url += (url.includes("?") ? "&" : "?") + qs;
